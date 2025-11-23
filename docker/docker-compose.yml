@@ -1,0 +1,112 @@
+services:
+  exchange-db:
+    container_name: 'guide-exchange-db'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=exchange_service'
+      - 'MYSQL_PASSWORD=admin'
+      - 'MYSQL_ROOT_PASSWORD=admin'
+      - 'MYSQL_USER=mydb'
+    ports:
+      - '3306:3306'
+    networks:
+      - felipe-network
+    restart: always
+
+  book-db:
+    container_name: 'guide-book-db'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=book_service'
+      - 'MYSQL_PASSWORD=admin'
+      - 'MYSQL_ROOT_PASSWORD=admin'
+      - 'MYSQL_USER=mydb'
+    ports:
+      - '3307:3306'
+    networks:
+      - felipe-network
+    restart: always
+
+
+  zipkin-server:
+    image: openzipkin/zipkin:3.5.1
+    ports:
+      - 9411:9411
+    networks:
+      - felipe-network
+    restart: always
+
+  naming-server:
+    image: felpera10/naming-server:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    depends_on:
+      - zipkin-server
+    restart: always
+    networks:
+      - felipe-network
+
+  api-gateway:
+    image: felpera10/api-gateway:0.0.1-SNAPSHOT
+    ports:
+      - 8765:8765
+    restart: always
+    depends_on:
+      - zipkin-server
+      - naming-server
+    environment:
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://naming-server:8761/eureka
+    networks:
+      - felipe-network
+
+  exchange-service:
+    image: felpera10/exchange-service
+    restart: always
+    build:
+      context: ../exchange-service
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:mysql://exchange-db:3306/exchange_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
+      SPRING_DATASOURCE_USERNAME: mydb
+      SPRING_DATASOURCE_PASSWORD: admin
+      EUREKA_INSTANCE_HOSTNAME: exchange-service
+    depends_on:
+      - zipkin-server
+      - naming-server
+      - exchange-db
+    ports:
+      - 8000:8000
+    networks:
+      - felipe-network
+
+  book-service:
+    image: felpera10/book-service
+    restart: always
+    build:
+      context: ../book_service
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:mysql://book-db:3306/book_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
+      SPRING_DATASOURCE_USERNAME: mydb
+      SPRING_DATASOURCE_PASSWORD: admin
+      EUREKA_INSTANCE_HOSTNAME: book-service
+    depends_on:
+      - zipkin-server
+      - naming-server
+      - book-db
+    ports:
+      - 8100:8100
+    networks:
+      - felipe-network
+
+networks:
+  felipe-network:
+    name: felipe-network
+    driver: bridge
