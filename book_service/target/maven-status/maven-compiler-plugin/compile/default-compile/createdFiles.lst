@@ -1,0 +1,14 @@
+br\com\config\WebConfig.class
+br\com\config\OpenApiConfiguration.class
+br\com\client\IFeignClient.class
+br\com\controller\FooBarController.class
+br\com\dto\Exchange.class
+br\com\StartUp.class
+br\com\client\ApiRestClient.class
+br\com\repository\BookRepository.class
+br\com\config\ZipkinCustomSenderConfig.class
+br\com\controller\BookController.class
+br\com\service\BookService.class
+br\com\environment\InstanceInformationService.class
+br\com\client\ExchangeApiClient.class
+br\com\model\Book.class

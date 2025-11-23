@@ -1,0 +1,14 @@
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\client\ApiRestClient.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\client\ExchangeApiClient.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\client\IFeignClient.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\config\OpenApiConfiguration.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\config\WebConfig.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\config\ZipkinCustomSenderConfig.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\controller\BookController.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\controller\FooBarController.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\dto\Exchange.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\environment\InstanceInformationService.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\model\Book.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\repository\BookRepository.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\service\BookService.java
+C:\Projetos\curso-erudio-microservice\book_service\src\main\java\br\com\StartUp.java
