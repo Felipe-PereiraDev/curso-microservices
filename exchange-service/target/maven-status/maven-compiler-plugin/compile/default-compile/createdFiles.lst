@@ -1,0 +1,9 @@
+br\com\config\WebConfig.class
+br\com\config\OpenApiConfiguration.class
+br\com\controller\ExchangeController.class
+br\com\repository\ExchangeRepository.class
+br\com\environment\InstanceInformationService.class
+br\com\service\ExchangeService.class
+br\com\StartUp.class
+br\com\config\ZipkinCustomSenderConfig.class
+br\com\model\Exchange.class

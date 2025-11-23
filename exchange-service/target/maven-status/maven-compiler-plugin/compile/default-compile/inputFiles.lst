@@ -1,0 +1,9 @@
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\config\OpenApiConfiguration.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\config\WebConfig.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\config\ZipkinCustomSenderConfig.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\controller\ExchangeController.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\environment\InstanceInformationService.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\model\Exchange.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\repository\ExchangeRepository.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\service\ExchangeService.java
+C:\Projetos\curso-erudio-microservice\exchange-service\src\main\java\br\com\StartUp.java
