@@ -37,3 +37,8 @@ jobs:
     - name: Build Exchange Service Docker Image
       working-directory: ./exchange-service
       run: mvn clean package -DskipTests
+
+
+    - name: Docker Compose Build
+      working-directory: ./docker
+      run: docker compose build
