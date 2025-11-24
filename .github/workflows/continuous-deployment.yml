@@ -25,3 +25,15 @@ jobs:
     - name: Build Erueka naming Server Docker Image
       working-directory: ./naming-server
       run: mvn spring-boot:build-image -DskipTests
+
+    - name: Build API Gateway Docker Image
+      working-directory: ./api-gateway
+      run: mvn spring-boot:build-image -DskipTests
+
+    - name: Build Book Service Docker Image
+      working-directory: ./book_service
+      run: mvn clean package -DskipTests
+
+    - name: Build Exchange Service Docker Image
+      working-directory: ./exchange-service
+      run: mvn clean package -DskipTests
